@@ -20,4 +20,3 @@ extension RegisterViewController:ProgressSpinnerDelegate{
         childProgressView.removeFromParent()
     }
 }
-

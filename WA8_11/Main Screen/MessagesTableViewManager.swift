@@ -19,7 +19,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         cell.labelTextMessages.text = messagesList[indexPath.row].textMessages
         cell.labelDate.text = messagesList[indexPath.row].date
         cell.labelTime.text = messagesList[indexPath.row].time
-        
         return cell
     }
 }

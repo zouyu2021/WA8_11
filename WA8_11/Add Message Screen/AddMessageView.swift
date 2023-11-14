@@ -4,8 +4,6 @@
 //
 //  Created by Yu Zou on 11/13/23.
 //
-
-
 import UIKit
 
 class AddMessageView: UIView {
@@ -82,5 +80,4 @@ class AddMessageView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

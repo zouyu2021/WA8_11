@@ -69,7 +69,7 @@ class ViewController: UIViewController {
                             self.mainScreen.tableViewMessages.reloadData()
                         }
                     })
-                
+               
             }
         }
     }
@@ -96,7 +96,7 @@ class ViewController: UIViewController {
         //MARK: tapping the floating add contact button...
         mainScreen.floatingButtonAddMessage.addTarget(self, action: #selector(addMessageButtonTapped), for: .touchUpInside)
     }
-        
+       
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -114,5 +114,3 @@ class ViewController: UIViewController {
     }
 
 }
-
-
