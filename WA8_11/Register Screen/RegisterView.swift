@@ -36,6 +36,7 @@ class RegisterView: UIView {
     func setuptextFieldEmail(){
         textFieldEmail = UITextField()
         textFieldEmail.placeholder = "Email"
+        textFieldEmail.autocapitalizationType = .none
         textFieldEmail.keyboardType = .emailAddress
         textFieldEmail.borderStyle = .roundedRect
         textFieldEmail.translatesAutoresizingMaskIntoConstraints = false

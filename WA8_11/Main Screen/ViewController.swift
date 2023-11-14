@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var messagesList = [Messages]()
     var handleAuth: AuthStateDidChangeListenerHandle?
     var currentUser:FirebaseAuth.User?
+    let database = Firestore.firestore()
         
     override func loadView() {
         view = mainScreen
@@ -36,6 +37,9 @@ class ViewController: UIViewController {
                 //MARK: Reset tableView.
                 self.messagesList.removeAll()
                 self.mainScreen.tableViewMessages.reloadData()
+                
+                //MARK: Sign in bar button...
+                self.setupRightBarButton(isLoggedin: false)
             }else{
                 //MARK: the user is signed in.
                 self.currentUser = user
@@ -43,6 +47,29 @@ class ViewController: UIViewController {
                 self.mainScreen.floatingButtonAddMessage.isEnabled = true
                 self.mainScreen.floatingButtonAddMessage.isHidden = false
                 
+                //MARK: Logout bar button...
+                self.setupRightBarButton(isLoggedin: true)
+                
+                //MARK: Observe Firestore database to display the contacts list...
+                self.database.collection("users")
+                    .document((self.currentUser?.email)!)
+                    .collection("contacts")
+                    .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
+                        if let documents = querySnapshot?.documents{
+                            self.messagesList.removeAll()
+                            for document in documents{
+                                do{
+                                    let message  = try document.data(as: Messages.self)
+                                    self.messagesList.append(message)
+                                }catch{
+                                    print(error)
+                                }
+                            }
+                            self.messagesList.sort(by: {$0.name < $1.name})
+                            self.mainScreen.tableViewMessages.reloadData()
+                        }
+                    })
+               
             }
         }
     }
@@ -66,13 +93,24 @@ class ViewController: UIViewController {
         //MARK: removing the separator line.
         mainScreen.tableViewMessages.separatorStyle = .none
         
-        //MARK: tapping the floating add
-        
+        //MARK: tapping the floating add contact button...
+        mainScreen.floatingButtonAddMessage.addTarget(self, action: #selector(addMessageButtonTapped), for: .touchUpInside)
     }
+       
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         Auth.auth().removeStateDidChangeListener(handleAuth!)
     }
-}
+    
+    func signIn(email: String, password: String){
+        Auth.auth().signIn(withEmail: email, password: password)
+    }
+    
+    @objc func addMessageButtonTapped(){
+        let addMessageController = AddMessageViewController()
+        addMessageController.currentUser = self.currentUser
+        navigationController?.pushViewController(addMessageController, animated: true)
+    }
 
+}

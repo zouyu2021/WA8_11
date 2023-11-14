@@ -13,6 +13,27 @@
 		B848150E2B029D7B009BC265 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B848150C2B029D7B009BC265 /* Main.storyboard */; };
 		B84815102B029D7D009BC265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B848150F2B029D7D009BC265 /* Assets.xcassets */; };
 		B84815132B029D7D009BC265 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84815112B029D7D009BC265 /* LaunchScreen.storyboard */; };
+		B8E873572B031ECA0058E426 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8E873562B031ECA0058E426 /* GoogleService-Info.plist */; };
+		B8E8735A2B031F2E0058E426 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B8E873592B031F2E0058E426 /* FirebaseAuth */; };
+		B8E8735C2B031F2E0058E426 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B8E8735B2B031F2E0058E426 /* FirebaseDatabase */; };
+		B8E8735E2B031F2E0058E426 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B8E8735D2B031F2E0058E426 /* FirebaseFirestore */; };
+		B8E873602B031F2E0058E426 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8E8735F2B031F2E0058E426 /* FirebaseFirestoreSwift */; };
+		B8E873622B031F2E0058E426 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B8E873612B031F2E0058E426 /* FirebaseMessaging */; };
+		B8E873642B031F2E0058E426 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B8E873632B031F2E0058E426 /* FirebaseStorage */; };
+		B8E873662B031F670058E426 /* RightBarButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873652B031F670058E426 /* RightBarButtonManager.swift */; };
+		B8E873682B031F7E0058E426 /* MessagesTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873672B031F7E0058E426 /* MessagesTableViewManager.swift */; };
+		B8E8736A2B031FAC0058E426 /* MassagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873692B031FAC0058E426 /* MassagesTableViewCell.swift */; };
+		B8E8736C2B031FC80058E426 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8736B2B031FC80058E426 /* MainScreenView.swift */; };
+		B8E873702B0320230058E426 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8736F2B0320230058E426 /* Config.swift */; };
+		B8E873722B0320570058E426 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873712B0320570058E426 /* Messages.swift */; };
+		B8E873742B03210E0058E426 /* RegisterFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873732B03210E0058E426 /* RegisterFirebaseManager.swift */; };
+		B8E873782B03217B0058E426 /* RegisterProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873772B03217B0058E426 /* RegisterProgressIndicatorManager.swift */; };
+		B8E8737A2B0321A10058E426 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873792B0321A10058E426 /* RegisterView.swift */; };
+		B8E8737C2B0321EC0058E426 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8737B2B0321EC0058E426 /* RegisterViewController.swift */; };
+		B8E8737E2B0322100058E426 /* ProgressSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8737D2B0322100058E426 /* ProgressSpinnerViewController.swift */; };
+		B8E873802B0322230058E426 /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8737F2B0322230058E426 /* ProgressSpinnerDelegate.swift */; };
+		B8E873832B0325450058E426 /* AddMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873822B0325450058E426 /* AddMessageViewController.swift */; };
+		B8E873852B0325660058E426 /* AddMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873842B0325660058E426 /* AddMessageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +45,21 @@
 		B848150F2B029D7D009BC265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B84815122B029D7D009BC265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B84815142B029D7D009BC265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8E873562B031ECA0058E426 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B8E873652B031F670058E426 /* RightBarButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBarButtonManager.swift; sourceTree = "<group>"; };
+		B8E873672B031F7E0058E426 /* MessagesTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewManager.swift; sourceTree = "<group>"; };
+		B8E873692B031FAC0058E426 /* MassagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassagesTableViewCell.swift; sourceTree = "<group>"; };
+		B8E8736B2B031FC80058E426 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		B8E8736F2B0320230058E426 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B8E873712B0320570058E426 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		B8E873732B03210E0058E426 /* RegisterFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFirebaseManager.swift; sourceTree = "<group>"; };
+		B8E873772B03217B0058E426 /* RegisterProgressIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProgressIndicatorManager.swift; sourceTree = "<group>"; };
+		B8E873792B0321A10058E426 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		B8E8737B2B0321EC0058E426 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B8E8737D2B0322100058E426 /* ProgressSpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerViewController.swift; sourceTree = "<group>"; };
+		B8E8737F2B0322230058E426 /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
+		B8E873822B0325450058E426 /* AddMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
+		B8E873842B0325660058E426 /* AddMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +67,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E8735C2B031F2E0058E426 /* FirebaseDatabase in Frameworks */,
+				B8E8735A2B031F2E0058E426 /* FirebaseAuth in Frameworks */,
+				B8E873622B031F2E0058E426 /* FirebaseMessaging in Frameworks */,
+				B8E8735E2B031F2E0058E426 /* FirebaseFirestore in Frameworks */,
+				B8E873602B031F2E0058E426 /* FirebaseFirestoreSwift in Frameworks */,
+				B8E873642B031F2E0058E426 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +98,62 @@
 		B84815052B029D7B009BC265 /* WA8_11 */ = {
 			isa = PBXGroup;
 			children = (
+				B8E873812B0325260058E426 /* Add Message Screen */,
+				B8E8736F2B0320230058E426 /* Config.swift */,
+				B8E873712B0320570058E426 /* Messages.swift */,
+				B8E8736E2B03200B0058E426 /* Process Indicator */,
+				B8E8736D2B031FFD0058E426 /* Register Screen */,
+				B8E873552B031D1E0058E426 /* Main Screen */,
 				B84815062B029D7B009BC265 /* AppDelegate.swift */,
 				B84815082B029D7B009BC265 /* SceneDelegate.swift */,
-				B848150A2B029D7B009BC265 /* ViewController.swift */,
 				B848150C2B029D7B009BC265 /* Main.storyboard */,
 				B848150F2B029D7D009BC265 /* Assets.xcassets */,
 				B84815112B029D7D009BC265 /* LaunchScreen.storyboard */,
 				B84815142B029D7D009BC265 /* Info.plist */,
+				B8E873562B031ECA0058E426 /* GoogleService-Info.plist */,
 			);
 			path = WA8_11;
+			sourceTree = "<group>";
+		};
+		B8E873552B031D1E0058E426 /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B848150A2B029D7B009BC265 /* ViewController.swift */,
+				B8E873652B031F670058E426 /* RightBarButtonManager.swift */,
+				B8E873672B031F7E0058E426 /* MessagesTableViewManager.swift */,
+				B8E873692B031FAC0058E426 /* MassagesTableViewCell.swift */,
+				B8E8736B2B031FC80058E426 /* MainScreenView.swift */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		B8E8736D2B031FFD0058E426 /* Register Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B8E873732B03210E0058E426 /* RegisterFirebaseManager.swift */,
+				B8E873772B03217B0058E426 /* RegisterProgressIndicatorManager.swift */,
+				B8E873792B0321A10058E426 /* RegisterView.swift */,
+				B8E8737B2B0321EC0058E426 /* RegisterViewController.swift */,
+			);
+			path = "Register Screen";
+			sourceTree = "<group>";
+		};
+		B8E8736E2B03200B0058E426 /* Process Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				B8E8737D2B0322100058E426 /* ProgressSpinnerViewController.swift */,
+				B8E8737F2B0322230058E426 /* ProgressSpinnerDelegate.swift */,
+			);
+			path = "Process Indicator";
+			sourceTree = "<group>";
+		};
+		B8E873812B0325260058E426 /* Add Message Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B8E873822B0325450058E426 /* AddMessageViewController.swift */,
+				B8E873842B0325660058E426 /* AddMessageView.swift */,
+			);
+			path = "Add Message Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +172,14 @@
 			dependencies = (
 			);
 			name = WA8_11;
+			packageProductDependencies = (
+				B8E873592B031F2E0058E426 /* FirebaseAuth */,
+				B8E8735B2B031F2E0058E426 /* FirebaseDatabase */,
+				B8E8735D2B031F2E0058E426 /* FirebaseFirestore */,
+				B8E8735F2B031F2E0058E426 /* FirebaseFirestoreSwift */,
+				B8E873612B031F2E0058E426 /* FirebaseMessaging */,
+				B8E873632B031F2E0058E426 /* FirebaseStorage */,
+			);
 			productName = WA8_11;
 			productReference = B84815032B029D7B009BC265 /* WA8_11.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +208,9 @@
 				Base,
 			);
 			mainGroup = B84814FA2B029D7B009BC265;
+			packageReferences = (
+				B8E873582B031F2E0058E426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B84815042B029D7B009BC265 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B84815132B029D7D009BC265 /* LaunchScreen.storyboard in Resources */,
+				B8E873572B031ECA0058E426 /* GoogleService-Info.plist in Resources */,
 				B84815102B029D7D009BC265 /* Assets.xcassets in Resources */,
 				B848150E2B029D7B009BC265 /* Main.storyboard in Resources */,
 			);
@@ -138,9 +239,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E873662B031F670058E426 /* RightBarButtonManager.swift in Sources */,
+				B8E8736A2B031FAC0058E426 /* MassagesTableViewCell.swift in Sources */,
+				B8E8736C2B031FC80058E426 /* MainScreenView.swift in Sources */,
+				B8E873782B03217B0058E426 /* RegisterProgressIndicatorManager.swift in Sources */,
+				B8E873722B0320570058E426 /* Messages.swift in Sources */,
+				B8E8737E2B0322100058E426 /* ProgressSpinnerViewController.swift in Sources */,
+				B8E873832B0325450058E426 /* AddMessageViewController.swift in Sources */,
+				B8E873682B031F7E0058E426 /* MessagesTableViewManager.swift in Sources */,
 				B848150B2B029D7B009BC265 /* ViewController.swift in Sources */,
+				B8E873702B0320230058E426 /* Config.swift in Sources */,
 				B84815072B029D7B009BC265 /* AppDelegate.swift in Sources */,
+				B8E873852B0325660058E426 /* AddMessageView.swift in Sources */,
+				B8E873802B0322230058E426 /* ProgressSpinnerDelegate.swift in Sources */,
+				B8E8737A2B0321A10058E426 /* RegisterView.swift in Sources */,
+				B8E8737C2B0321EC0058E426 /* RegisterViewController.swift in Sources */,
 				B84815092B029D7B009BC265 /* SceneDelegate.swift in Sources */,
+				B8E873742B03210E0058E426 /* RegisterFirebaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +478,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B8E873582B031F2E0058E426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.17.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B8E873592B031F2E0058E426 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E873582B031F2E0058E426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B8E8735B2B031F2E0058E426 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E873582B031F2E0058E426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		B8E8735D2B031F2E0058E426 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E873582B031F2E0058E426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		B8E8735F2B031F2E0058E426 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E873582B031F2E0058E426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		B8E873612B031F2E0058E426 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E873582B031F2E0058E426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		B8E873632B031F2E0058E426 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E873582B031F2E0058E426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B84814FB2B029D7B009BC265 /* Project object */;
 }

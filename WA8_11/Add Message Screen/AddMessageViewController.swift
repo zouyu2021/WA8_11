@@ -6,24 +6,29 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class AddMessageViewController: UIViewController {
+    
+    var currentUser:FirebaseAuth.User?
+    
+    let addMessageScreen = AddMessageView()
+    
+    let database = Firestore.firestore()
+    
+    let childProgressView = ProgressSpinnerViewController()
 
+    override func loadView() {
+        view = addMessageScreen
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBar.prefersLargeTitles = false
+        title = "Add a New Message"
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    //MARK: on add button tapped....
 }

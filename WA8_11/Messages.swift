@@ -6,3 +6,19 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+
+struct Messages: Codable{
+    @DocumentID var id: String?
+    var name: String
+    var textMessages: String
+    var date: String
+    var time: String
+    
+    init(name: String, textMessages: String, date: String, time: String) {
+        self.name = name
+        self.textMessages = textMessages
+        self.date = date
+        self.time = time
+    }
+}

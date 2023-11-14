@@ -13,6 +13,8 @@ class RegisterViewController: UIViewController {
 
     let registerView = RegisterView()
     
+    let childProgressView = ProgressSpinnerViewController()
+   
     override func loadView() {
         view = registerView
     }
