@@ -11,18 +11,18 @@ class MassagesTableViewCell: UITableViewCell {
         
     var wrapperCellView: UIView!
     var labelName: UILabel!
-    var labelTextMessages: UILabel!
-    var labelDate: UILabel!
-    var labelTime: UILabel!
+//    var labelTextMessages: UILabel!
+//    var labelDate: UILabel!
+//    var labelTime: UILabel!
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
             
         setupWrapperCellView()
         setupLabelName()
-        setupLabelTextMessages()
-        setupLabelDate()
-        setupLableTime()
+//        setupLabelTextMessages()
+//        setupLabelDate()
+//        setupLableTime()
             
         initConstraints()
     }
@@ -52,26 +52,26 @@ class MassagesTableViewCell: UITableViewCell {
         wrapperCellView.addSubview(labelName)
     }
     
-    func setupLabelTextMessages(){
-        labelTextMessages = UILabel()
-        labelTextMessages.font = UIFont.boldSystemFont(ofSize: 14)
-        labelTextMessages.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelTextMessages)
-    }
-    
-    func setupLabelDate(){
-        labelDate = UILabel()
-        labelDate.font = UIFont.boldSystemFont(ofSize: 14)
-        labelDate.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelDate)
-    }
-    
-    func setupLableTime(){
-        labelTime = UILabel()
-        labelTime.font = UIFont.boldSystemFont(ofSize: 14)
-        labelTime.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelTime)
-    }
+//    func setupLabelTextMessages(){
+//        labelTextMessages = UILabel()
+//        labelTextMessages.font = UIFont.boldSystemFont(ofSize: 14)
+//        labelTextMessages.translatesAutoresizingMaskIntoConstraints = false
+//        wrapperCellView.addSubview(labelTextMessages)
+//    }
+//    
+//    func setupLabelDate(){
+//        labelDate = UILabel()
+//        labelDate.font = UIFont.boldSystemFont(ofSize: 14)
+//        labelDate.translatesAutoresizingMaskIntoConstraints = false
+//        wrapperCellView.addSubview(labelDate)
+//    }
+//    
+//    func setupLableTime(){
+//        labelTime = UILabel()
+//        labelTime.font = UIFont.boldSystemFont(ofSize: 14)
+//        labelTime.translatesAutoresizingMaskIntoConstraints = false
+//        wrapperCellView.addSubview(labelTime)
+//    }
     
     
     func initConstraints(){
@@ -86,20 +86,20 @@ class MassagesTableViewCell: UITableViewCell {
             labelName.heightAnchor.constraint(equalToConstant: 20),
             labelName.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
             
-            labelDate.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 8),
-            labelDate.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 20),
-            labelDate.heightAnchor.constraint(equalToConstant: 20),
-            labelDate.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
-            
-            labelTime.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 8),
-            labelTime.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 26),
-            labelTime.heightAnchor.constraint(equalToConstant: 20),
-            labelTime.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
-            
-            labelTextMessages.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 2),
-            labelTextMessages.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
-            labelTextMessages.heightAnchor.constraint(equalToConstant: 16),
-            labelTextMessages.widthAnchor.constraint(lessThanOrEqualTo: labelName.widthAnchor),
+//            labelDate.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 8),
+//            labelDate.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 20),
+//            labelDate.heightAnchor.constraint(equalToConstant: 20),
+//            labelDate.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
+//            
+//            labelTime.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 8),
+//            labelTime.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 26),
+//            labelTime.heightAnchor.constraint(equalToConstant: 20),
+//            labelTime.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
+//            
+//            labelTextMessages.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 2),
+//            labelTextMessages.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
+//            labelTextMessages.heightAnchor.constraint(equalToConstant: 16),
+//            labelTextMessages.widthAnchor.constraint(lessThanOrEqualTo: labelName.widthAnchor),
             
             
             wrapperCellView.heightAnchor.constraint(equalToConstant: 72)

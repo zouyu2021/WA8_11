@@ -13,10 +13,12 @@ class ViewController: UIViewController {
     
     let mainScreen = MainScreenView()
     
-    var messagesList = [Messages]()
+   //  var messagesList = [Messages]()
     var handleAuth: AuthStateDidChangeListenerHandle?
     var currentUser:FirebaseAuth.User?
     let database = Firestore.firestore()
+    
+    var contactList = [Contact]()
         
     override func loadView() {
         view = mainScreen
@@ -35,7 +37,7 @@ class ViewController: UIViewController {
                 self.mainScreen.floatingButtonAddMessage.isEnabled = false
                 self.mainScreen.floatingButtonAddMessage.isHidden = true
                 //MARK: Reset tableView.
-                self.messagesList.removeAll()
+                self.contactList.removeAll()
                 self.mainScreen.tableViewMessages.reloadData()
                 
                 //MARK: Sign in bar button...
@@ -43,7 +45,7 @@ class ViewController: UIViewController {
             }else{
                 //MARK: the user is signed in.
                 self.currentUser = user
-                self.mainScreen.labelText.text = "Welcome\(user?.displayName ?? "Anonymous")!"
+                self.mainScreen.labelText.text = "Welcome \(user?.displayName ?? "Anonymous")!"
                 self.mainScreen.floatingButtonAddMessage.isEnabled = true
                 self.mainScreen.floatingButtonAddMessage.isHidden = false
                 
@@ -51,21 +53,29 @@ class ViewController: UIViewController {
                 self.setupRightBarButton(isLoggedin: true)
                 
                 //MARK: Observe Firestore database to display the contacts list...
+                // all users are friends with other
                 self.database.collection("users")
-                    .document((self.currentUser?.email)!)
-                    .collection("contacts")
                     .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
                         if let documents = querySnapshot?.documents{
-                            self.messagesList.removeAll()
+                            self.contactList.removeAll()
                             for document in documents{
                                 do{
-                                    let message  = try document.data(as: Messages.self)
-                                    self.messagesList.append(message)
+                                    // Access the "name" field
+                                    let name = try document.get("name") as? String ?? ""
+                                    // Get the document ID (assuming it's the email)
+                                    let email = document.documentID
+                                    // If the email is same as current user's email
+                                    if email == self.currentUser?.email{
+                                        continue
+                                    }
+                                    
+                                    let contact = Contact(name: name, email: email)
+                                    self.contactList.append(contact)
                                 }catch{
                                     print(error)
                                 }
                             }
-                            self.messagesList.sort(by: {$0.name < $1.name})
+                            self.contactList.sort(by: {$0.name < $1.name})
                             self.mainScreen.tableViewMessages.reloadData()
                         }
                     })
@@ -78,10 +88,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "My Messages"
+        title = "My Contacts"
         
         //MARK: Make the titles look large.
-        navigationController?.navigationBar.prefersLargeTitles = true
+        // navigationController?.navigationBar.prefersLargeTitles = true
         
         //MARK: put the floating button above all views.
         view.bringSubviewToFront(mainScreen.floatingButtonAddMessage)
@@ -113,4 +123,10 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(addMessageController, animated: true)
     }
 
+    func getChatDetails(contact: Contact){
+        let messagesViewController = MessagesViewController()
+        messagesViewController.receiver = contact
+        navigationController?.pushViewController(messagesViewController, animated: true)
+        
+    }
 }

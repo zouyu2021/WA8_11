@@ -25,7 +25,7 @@
 		B8E8736A2B031FAC0058E426 /* MassagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873692B031FAC0058E426 /* MassagesTableViewCell.swift */; };
 		B8E8736C2B031FC80058E426 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8736B2B031FC80058E426 /* MainScreenView.swift */; };
 		B8E873702B0320230058E426 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8736F2B0320230058E426 /* Config.swift */; };
-		B8E873722B0320570058E426 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873712B0320570058E426 /* Messages.swift */; };
+		B8E873722B0320570058E426 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873712B0320570058E426 /* Message.swift */; };
 		B8E873742B03210E0058E426 /* RegisterFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873732B03210E0058E426 /* RegisterFirebaseManager.swift */; };
 		B8E873782B03217B0058E426 /* RegisterProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873772B03217B0058E426 /* RegisterProgressIndicatorManager.swift */; };
 		B8E8737A2B0321A10058E426 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873792B0321A10058E426 /* RegisterView.swift */; };
@@ -34,6 +34,10 @@
 		B8E873802B0322230058E426 /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8737F2B0322230058E426 /* ProgressSpinnerDelegate.swift */; };
 		B8E873832B0325450058E426 /* AddMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873822B0325450058E426 /* AddMessageViewController.swift */; };
 		B8E873852B0325660058E426 /* AddMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873842B0325660058E426 /* AddMessageView.swift */; };
+		B9AE922F2B05D77E00479A5B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE922E2B05D77E00479A5B /* Contact.swift */; };
+		B9AE92322B061E4600479A5B /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92312B061E4600479A5B /* MessagesView.swift */; };
+		B9AE92342B061E5A00479A5B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92332B061E5A00479A5B /* MessagesViewController.swift */; };
+		B9AE92362B06253300479A5B /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92352B06253300479A5B /* MsgTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +55,7 @@
 		B8E873692B031FAC0058E426 /* MassagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassagesTableViewCell.swift; sourceTree = "<group>"; };
 		B8E8736B2B031FC80058E426 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		B8E8736F2B0320230058E426 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		B8E873712B0320570058E426 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		B8E873712B0320570058E426 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B8E873732B03210E0058E426 /* RegisterFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFirebaseManager.swift; sourceTree = "<group>"; };
 		B8E873772B03217B0058E426 /* RegisterProgressIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProgressIndicatorManager.swift; sourceTree = "<group>"; };
 		B8E873792B0321A10058E426 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -60,6 +64,10 @@
 		B8E8737F2B0322230058E426 /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
 		B8E873822B0325450058E426 /* AddMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
 		B8E873842B0325660058E426 /* AddMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageView.swift; sourceTree = "<group>"; };
+		B9AE922E2B05D77E00479A5B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		B9AE92312B061E4600479A5B /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		B9AE92332B061E5A00479A5B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		B9AE92352B06253300479A5B /* MsgTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +108,9 @@
 			children = (
 				B8E873812B0325260058E426 /* Add Message Screen */,
 				B8E8736F2B0320230058E426 /* Config.swift */,
-				B8E873712B0320570058E426 /* Messages.swift */,
+				B8E873712B0320570058E426 /* Message.swift */,
+				B9AE922E2B05D77E00479A5B /* Contact.swift */,
+				B9AE92302B061E1900479A5B /* Messages Screen */,
 				B8E8736E2B03200B0058E426 /* Process Indicator */,
 				B8E8736D2B031FFD0058E426 /* Register Screen */,
 				B8E873552B031D1E0058E426 /* Main Screen */,
@@ -154,6 +164,16 @@
 				B8E873842B0325660058E426 /* AddMessageView.swift */,
 			);
 			path = "Add Message Screen";
+			sourceTree = "<group>";
+		};
+		B9AE92302B061E1900479A5B /* Messages Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B9AE92312B061E4600479A5B /* MessagesView.swift */,
+				B9AE92332B061E5A00479A5B /* MessagesViewController.swift */,
+				B9AE92352B06253300479A5B /* MsgTableViewCell.swift */,
+			);
+			path = "Messages Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,17 +262,21 @@
 				B8E873662B031F670058E426 /* RightBarButtonManager.swift in Sources */,
 				B8E8736A2B031FAC0058E426 /* MassagesTableViewCell.swift in Sources */,
 				B8E8736C2B031FC80058E426 /* MainScreenView.swift in Sources */,
+				B9AE92322B061E4600479A5B /* MessagesView.swift in Sources */,
 				B8E873782B03217B0058E426 /* RegisterProgressIndicatorManager.swift in Sources */,
-				B8E873722B0320570058E426 /* Messages.swift in Sources */,
+				B8E873722B0320570058E426 /* Message.swift in Sources */,
 				B8E8737E2B0322100058E426 /* ProgressSpinnerViewController.swift in Sources */,
 				B8E873832B0325450058E426 /* AddMessageViewController.swift in Sources */,
 				B8E873682B031F7E0058E426 /* MessagesTableViewManager.swift in Sources */,
 				B848150B2B029D7B009BC265 /* ViewController.swift in Sources */,
+				B9AE92342B061E5A00479A5B /* MessagesViewController.swift in Sources */,
 				B8E873702B0320230058E426 /* Config.swift in Sources */,
 				B84815072B029D7B009BC265 /* AppDelegate.swift in Sources */,
 				B8E873852B0325660058E426 /* AddMessageView.swift in Sources */,
 				B8E873802B0322230058E426 /* ProgressSpinnerDelegate.swift in Sources */,
+				B9AE92362B06253300479A5B /* MsgTableViewCell.swift in Sources */,
 				B8E8737A2B0321A10058E426 /* RegisterView.swift in Sources */,
+				B9AE922F2B05D77E00479A5B /* Contact.swift in Sources */,
 				B8E8737C2B0321EC0058E426 /* RegisterViewController.swift in Sources */,
 				B84815092B029D7B009BC265 /* SceneDelegate.swift in Sources */,
 				B8E873742B03210E0058E426 /* RegisterFirebaseManager.swift in Sources */,
