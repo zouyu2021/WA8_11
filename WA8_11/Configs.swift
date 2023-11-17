@@ -8,7 +8,7 @@
 import Foundation
 
 class Configs{
-    static let tableViewContactID        = "tableViewContactID"
+    static let tableViewContactID       = "tableViewContactID"
     static let tableViewSelfMessageID   = "tableViewSelfMessageID"
     static let tableViewFriendMessageID = "tableViewFriendMessageID"
 }
