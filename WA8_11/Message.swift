@@ -10,13 +10,13 @@ import FirebaseFirestoreSwift
 
 struct Message: Codable{
     @DocumentID var id: String?
-    var senderName: String
-    var textMessages: String
-    var momentInTime: Date
+    var senderEmail: String
+    var text: String
+    var timestamp: Date
     
-    init(senderName: String, textMessages: String, momentInTime: Date) {
-        self.senderName   = senderName
-        self.textMessages = textMessages
-        self.momentInTime = momentInTime
+    init(senderEmail: String, text: String, timestamp: Date) {
+        self.senderEmail  = senderEmail
+        self.text = text
+        self.timestamp = timestamp
     }
 }

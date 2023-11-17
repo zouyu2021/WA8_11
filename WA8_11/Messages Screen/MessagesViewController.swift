@@ -39,64 +39,66 @@ class MessagesViewController: UIViewController {
         }
         
         // Check if a chat already exists
-        checkForExistingChat(with: receiver, currentUserEmail: currentUserEmail)
-        print("FIrst place")
-
-        guard let chatID = self.currentChatID else {
-            print("Chat ID is not available")
-            return
-        }
-
-        // Fetch messages for the current chat
-        database.collection("chats").document(chatID).collection("messages")
-            .order(by: "timestamp", descending: false)  // Assuming you want to order by timestamp
-            .getDocuments { [weak self] (querySnapshot, error) in
-                if let error = error {
-                    print("Error fetching messages: \(error)")
-                    return
-                }
-
-                guard let documents = querySnapshot?.documents else {
-                    print("No messages found for chat ID: \(chatID)")
-                    return
-                }
-                
-                for document in documents {
-                    do {
-                        let message = try document.data(as: Message.self)
-                        self?.messagesList.append(message)
-                        print("Message retrieved: \(message)")
-                    } catch {
-                        print("Error decoding message: \(error)")
-                    }
-                }
-
-                // After the loop, you can also print the entire messagesList
-                if let messages = self?.messagesList {
-                    print("All messages retrieved: \(messages)")
-                }
-                
-                
-//                self?.messagesList.removeAll()
-//
-//                for document in documents {
-//                    do {
-//                        let message = try document.data(as: Message.self)
-//                        self?.messagesList.append(message)
-//                        print("Message retrieved: \(message)")
-//                    } catch {
-//                        print("Error decoding message: \(error)")
-//                    }
-//                }
-//
-//                // After the loop, you can also print the entire messagesList
-//                if let messages = self?.messagesList {
-//                    print("All messages retrieved: \(messages)")
-//                }
-//
-//                // Reload your table view or other UI component
-//                self?.messagesScreen.tableViewMessages.reloadData()
+        checkForExistingChat(with: receiver, currentUserEmail: currentUserEmail) {
+            // Code here will run after checkForExistingChat completes
+            // For example, you can call another function here
+            guard let chatID = self.currentChatID else {
+                print("Chat ID is not available")
+                return
             }
+
+            // Fetch messages for the current chat
+            self.database.collection("chats").document(chatID).collection("messages")
+                .order(by: "timestamp", descending: false)  // Assuming you want to order by timestamp
+                .getDocuments { [weak self] (querySnapshot, error) in
+                    if let error = error {
+                        print("Error fetching messages: \(error)")
+                        return
+                    }
+
+                    guard let documents = querySnapshot?.documents else {
+                        print("No messages found for chat ID: \(chatID)")
+                        return
+                    }
+                    
+                    for document in documents {
+                        do {
+                            let message = try document.data(as: Message.self)
+                            self?.messagesList.append(message)
+                            print("Message retrieved: \(message)")
+                        } catch {
+                            print("Error decoding message: \(error)")
+                        }
+                    }
+
+                    // After the loop, you can also print the entire messagesList
+                    if let messages = self?.messagesList {
+                        print("All messages retrieved: \(messages)")
+                    }
+                    
+                    
+    //                self?.messagesList.removeAll()
+    //
+    //                for document in documents {
+    //                    do {
+    //                        let message = try document.data(as: Message.self)
+    //                        self?.messagesList.append(message)
+    //                        print("Message retrieved: \(message)")
+    //                    } catch {
+    //                        print("Error decoding message: \(error)")
+    //                    }
+    //                }
+    //
+    //                // After the loop, you can also print the entire messagesList
+    //                if let messages = self?.messagesList {
+    //                    print("All messages retrieved: \(messages)")
+    //                }
+    //
+    //                // Reload your table view or other UI component
+    //                self?.messagesScreen.tableViewMessages.reloadData()
+                }
+        }
+        
         
     }
   
@@ -111,13 +113,14 @@ class MessagesViewController: UIViewController {
     }
 
     
-    private func checkForExistingChat(with receiver: Contact, currentUserEmail: String) {
+    private func checkForExistingChat(with receiver: Contact, currentUserEmail: String, completion: @escaping () -> Void) {
         database.collection("users").document(currentUserEmail).collection("chats")
             .whereField("receiverEmail", isEqualTo: receiver.email)
             .getDocuments { [weak self] (snapshot, error) in
                 if let error = error {
                     print("Error checking for existing chat: \(error)")
                     return
+                    completion()
                 }
 
                 if let documents = snapshot?.documents, !documents.isEmpty {
@@ -130,6 +133,7 @@ class MessagesViewController: UIViewController {
                     // No existing chat, create a new one
                     self?.createChat(with: receiver, currentUserEmail: currentUserEmail)
                 }
+                completion()
             }
     }
 
