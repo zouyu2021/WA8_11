@@ -76,6 +76,9 @@ class ViewController: UIViewController {
                         }
                     })
                
+                
+                //MARK: Observe Firestore database to display the contacts list...
+                
             }
         }
     }

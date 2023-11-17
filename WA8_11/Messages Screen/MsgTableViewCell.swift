@@ -69,7 +69,7 @@ class MsgTableViewCell: UITableViewCell {
 //            messageLabel.textAlignment = .left
 //        }
 //    }
-//
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

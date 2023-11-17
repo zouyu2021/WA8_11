@@ -14,7 +14,6 @@ class MessagesViewController: UIViewController {
     let messagesScreen = MessagesView()
     var receiver: Contact!
     
-    
     // use this listener to track whether any user is signed in.
     var handleAuth: AuthStateDidChangeListenerHandle?
     // a variable to keep an instance of the current signed-in Firebase user.
@@ -28,7 +27,53 @@ class MessagesViewController: UIViewController {
         view = messagesScreen
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+
+        //MARK: handling if the Authentication state is changed (sign in, sign out, register)...
+        handleAuth = Auth.auth().addStateDidChangeListener{ auth, user in
+            if user == nil{
+                //MARK: not signed in.
+                
+            }else{
+                //MARK: the user is signed in.
+                self.currentUser = user
+
+                //MARK: Observe Firestore database to display the contacts list...
+                // all users are friends with other, add all users except the signed in user
+                self.database.collection("chats")
+                    .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
+                        if let documents = querySnapshot?.documents{
+                            self.messagesList.removeAll()
+                            for document in documents{
+                                do{
+                                    // Access the "name" field
+                                    let name = try document.get("name") as? String ?? ""
+                                    // Get the document ID (assuming it's the email)
+                                    let email = document.documentID
+                                    // If the email is same as current user's email
+                                    if email == self.currentUser?.email{
+                                        continue
+                                    }
+
+                                    let message = Message(senderName: sendername, textMessages: text, momentInTime: Date)
+                                    self.messagesList.append(message)
+                                }catch{
+                                    print(error)
+                                }
+                            }
+                            self.contactList.sort(by: {$0.name < $1.name})
+                            self.messagesScreen.tableViewMessages.reloadData()
+                        }
+                    })
+
+
+                //MARK: Observe Firestore database to display the contacts list...
+
+            }
+        }
+    }
   
     override func viewDidLoad() {
         super.viewDidLoad()

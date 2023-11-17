@@ -10,7 +10,7 @@ import UIKit
 class MessagesView: UIView {
     
     
-    var tableViewNotes: UITableView!
+    var tableViewMessages: UITableView!
     
     var buttonPostView:UIView!
     var textViewNote:  UITextView!
@@ -34,10 +34,10 @@ class MessagesView: UIView {
     
     //MARK: the table view to show the list of notes...
     func setupTableViewDetails(){
-        tableViewNotes = UITableView()
-        tableViewNotes.register(MsgTableViewCell.self, forCellReuseIdentifier: "notes")
-        tableViewNotes.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(tableViewNotes)
+        tableViewMessages = UITableView()
+        tableViewMessages.register(MsgTableViewCell.self, forCellReuseIdentifier: "Messages")
+        tableViewMessages.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(tableViewMessages)
     }
     
     //MARK: the bottom add contact view....
@@ -71,7 +71,7 @@ class MessagesView: UIView {
     func setupButtonPost(){
         buttonPost = UIButton(type: .system)
         buttonPost.titleLabel?.font = .boldSystemFont(ofSize: 24)
-        buttonPost.setTitle("Post", for: .normal)
+        buttonPost.setTitle("Send", for: .normal)
         buttonPost.translatesAutoresizingMaskIntoConstraints = false
         buttonPostView.addSubview(buttonPost)
         
@@ -85,10 +85,10 @@ class MessagesView: UIView {
         NSLayoutConstraint.activate([
             
             
-            tableViewNotes.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
-            tableViewNotes.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            tableViewNotes.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
-            tableViewNotes.bottomAnchor.constraint(equalTo: buttonPostView.topAnchor, constant: -16),
+            tableViewMessages.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+            tableViewMessages.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            tableViewMessages.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            tableViewMessages.bottomAnchor.constraint(equalTo: buttonPostView.topAnchor, constant: -16),
             
 
             buttonPostView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,constant: -8),
