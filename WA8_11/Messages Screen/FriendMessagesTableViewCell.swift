@@ -1,22 +1,27 @@
 //
-//  MsgTableViewCell.swift
-//  WA8_11
+//  FriendMessagesTableViewCell.swift
+//  TestTableViewCell
 //
-//  Created by 李凱鈞 on 11/16/23.
+//  Created by 李凱鈞 on 11/17/23.
 //
 
 import UIKit
 
 class FriendMessagesTableViewCell: UITableViewCell {
     
-    var messageLabel: UILabel!
+    var labelSender:     UILabel!
+    var labelDateTime:   UILabel!
+    var labelMessage:    UILabel!
     var wrapperCellView: UIView!
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupWrapperCellView()
-        setupMessageLabel()
+        setupLabelSender()
+        setupLabelDateTime()
+        setupLabelMessage()
+        
         initConstraints()
     }
     
@@ -36,13 +41,28 @@ class FriendMessagesTableViewCell: UITableViewCell {
         addSubview(wrapperCellView)
     }
     
-    func setupMessageLabel() {
-        messageLabel = UILabel()
-        messageLabel.font = UIFont.systemFont(ofSize: 16)
-        messageLabel.numberOfLines = 0 // Allows multiple lines
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.textAlignment = .left
-        wrapperCellView.addSubview(messageLabel)
+    func setupLabelSender() {
+        labelSender = UILabel()
+        labelSender.font = UIFont.systemFont(ofSize: 20)
+        labelSender.translatesAutoresizingMaskIntoConstraints = false
+        labelSender.textAlignment = .left
+        wrapperCellView.addSubview(labelSender)
+    }
+    
+    func setupLabelDateTime() {
+        labelDateTime = UILabel()
+        labelDateTime.font = UIFont.systemFont(ofSize: 10)
+        labelDateTime.translatesAutoresizingMaskIntoConstraints = false
+        wrapperCellView.addSubview(labelDateTime)
+    }
+    
+    func setupLabelMessage() {
+        labelMessage = UILabel()
+        labelMessage.font = UIFont.systemFont(ofSize: 16)
+        labelMessage.numberOfLines = 0 // Allows multiple lines
+        labelMessage.translatesAutoresizingMaskIntoConstraints = false
+        labelMessage.textAlignment = .left
+        wrapperCellView.addSubview(labelMessage)
     }
     
     func initConstraints() {
@@ -52,22 +72,26 @@ class FriendMessagesTableViewCell: UITableViewCell {
             wrapperCellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             wrapperCellView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             
-            messageLabel.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 8),
-            messageLabel.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 16),
-            messageLabel.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -16),
-            messageLabel.bottomAnchor.constraint(equalTo: wrapperCellView.bottomAnchor, constant: -8)
+            labelDateTime.topAnchor.constraint(equalTo: wrapperCellView.topAnchor),
+            labelDateTime.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            labelDateTime.heightAnchor.constraint(equalToConstant: 20),
+            
+            labelSender.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 4),
+            labelSender.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 16),
+            labelSender.heightAnchor.constraint(equalToConstant: 20),
+
+            labelMessage.topAnchor.constraint(equalTo: labelSender.bottomAnchor, constant: 8),
+            labelMessage.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 16),
+            labelMessage.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -16),
+            labelMessage.bottomAnchor.constraint(equalTo: wrapperCellView.bottomAnchor, constant: -8)
         ])
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }
