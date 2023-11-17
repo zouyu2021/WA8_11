@@ -29,57 +29,8 @@ class MessagesViewController: UIViewController {
         view = messagesScreen
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//
-//        //MARK: handling if the Authentication state is changed (sign in, sign out, register)...
-//        handleAuth = Auth.auth().addStateDidChangeListener{ auth, user in
-//            if user == nil{
-//                //MARK: not signed in.
-//
-//            }else{
-//                //MARK: the user is signed in.
-//                self.currentUser = user
-//
-//                //MARK: Observe Firestore database to display the contacts list...
-//                // all users are friends with other, add all users except the signed in user
-//                self.database.collection("chats")
-//                    .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
-//                        if let documents = querySnapshot?.documents{
-//                            self.messagesList.removeAll()
-//                            for document in documents{
-//                                do{
-//                                    // Access the "name" field
-//                                    let name = try document.get("name") as? String ?? ""
-//                                    // Get the document ID (assuming it's the email)
-//                                    let email = document.documentID
-//                                    // If the email is same as current user's email
-//                                    if email == self.currentUser?.email{
-//                                        continue
-//                                    }
-//
-//                                    let message = Message(senderName: sendername, textMessages: text, momentInTime: Date)
-//                                    self.messagesList.append(message)
-//                                }catch{
-//                                    print(error)
-//                                }
-//                            }
-//                            self.contactList.sort(by: {$0.name < $1.name})
-//                            self.messagesScreen.tableViewMessages.reloadData()
-//                        }
-//                    })
-//
-//
-//                //MARK: Observe Firestore database to display the contacts list...
-//
-//            }
-//        }
-//    }
-  
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = receiver.name
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         // Check if the receiver is set
         guard let receiver = receiver, let currentUserEmail = Auth.auth().currentUser?.email else {
@@ -89,6 +40,70 @@ class MessagesViewController: UIViewController {
         
         // Check if a chat already exists
         checkForExistingChat(with: receiver, currentUserEmail: currentUserEmail)
+        print("FIrst place")
+
+        guard let chatID = self.currentChatID else {
+            print("Chat ID is not available")
+            return
+        }
+
+        // Fetch messages for the current chat
+        database.collection("chats").document(chatID).collection("messages")
+            .order(by: "timestamp", descending: false)  // Assuming you want to order by timestamp
+            .getDocuments { [weak self] (querySnapshot, error) in
+                if let error = error {
+                    print("Error fetching messages: \(error)")
+                    return
+                }
+
+                guard let documents = querySnapshot?.documents else {
+                    print("No messages found for chat ID: \(chatID)")
+                    return
+                }
+                
+                for document in documents {
+                    do {
+                        let message = try document.data(as: Message.self)
+                        self?.messagesList.append(message)
+                        print("Message retrieved: \(message)")
+                    } catch {
+                        print("Error decoding message: \(error)")
+                    }
+                }
+
+                // After the loop, you can also print the entire messagesList
+                if let messages = self?.messagesList {
+                    print("All messages retrieved: \(messages)")
+                }
+                
+                
+//                self?.messagesList.removeAll()
+//
+//                for document in documents {
+//                    do {
+//                        let message = try document.data(as: Message.self)
+//                        self?.messagesList.append(message)
+//                        print("Message retrieved: \(message)")
+//                    } catch {
+//                        print("Error decoding message: \(error)")
+//                    }
+//                }
+//
+//                // After the loop, you can also print the entire messagesList
+//                if let messages = self?.messagesList {
+//                    print("All messages retrieved: \(messages)")
+//                }
+//
+//                // Reload your table view or other UI component
+//                self?.messagesScreen.tableViewMessages.reloadData()
+            }
+        
+    }
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = receiver.name
+        
         
         // Set up button action
         messagesScreen.buttonPost.addTarget(self, action: #selector(postMessage), for: .touchUpInside)
@@ -149,7 +164,7 @@ class MessagesViewController: UIViewController {
         database.collection("chats").document(newChatID).setData(["participants": [currentUserEmail, receiver.email]])
         
         self.currentChatID = newChatID
-        print("I am here", self.currentChatID)
+       
     }
     
     
@@ -157,14 +172,14 @@ class MessagesViewController: UIViewController {
         
         print("Post Message function")
 
-            // Print the text from the textView
-            print("Text from textView: \(String(describing: messagesScreen.textViewNote.text))")
+        // Print the text from the textView
+        print("Text from textView: \(String(describing: messagesScreen.textViewNote.text))")
 
-            // Check if the message text is empty
-            guard let messageText = messagesScreen.textViewNote.text, !messageText.isEmpty else {
-                print("Message text is empty")
-                return
-            }
+        // Check if the message text is empty
+        guard let messageText = messagesScreen.textViewNote.text, !messageText.isEmpty else {
+            print("Message text is empty")
+            return
+        }
 
             // Check if the currentChatID is set
         guard let chatID = self.currentChatID else {
@@ -179,12 +194,7 @@ class MessagesViewController: UIViewController {
                 return
             }
             print("Sender Email: \(currentUserEmail)")
-//        guard let messageText = messagesScreen.textViewNote.text, !messageText.isEmpty,
-//              let chatID = self.currentChatID,
-//              let senderEmail = currentUser?.email else {
-//            print("No text or chat ID or current user email")
-//            return
-//        }
+
 
         let newMessage = ["text": messageText, "senderEmail": currentUserEmail, "timestamp": FieldValue.serverTimestamp()] as [String : Any]
         let messageDocument = database.collection("chats").document(chatID).collection("messages").document()
