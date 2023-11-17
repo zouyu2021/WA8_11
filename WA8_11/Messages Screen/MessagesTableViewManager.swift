@@ -20,12 +20,27 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource{
 
         if message.senderEmail == currentUser?.displayName {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewSelfMessageID, for: indexPath) as? SelfMessagesTableViewCell {
-                cell.messageLabel.text = message.text
+                
+                cell.labelSender.text = message.senderEmail
+                
+                // Convert Date to String using a DateFormatter
+                let dateFormatter        = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy 'at' HH:mm"
+                cell.labelDateTime.text  = dateFormatter.string(from: message.timestamp)
+        
+                cell.labelMessage.text = message.text
                 return cell
             }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewFriendMessageID, for: indexPath) as? FriendMessagesTableViewCell {
-                cell.messageLabel.text = message.text
+                cell.labelSender.text = message.senderEmail
+                
+                // Convert Date to String using a DateFormatter
+                let dateFormatter        = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy 'at' HH:mm"
+                cell.labelDateTime.text  = dateFormatter.string(from: message.timestamp)
+        
+                cell.labelMessage.text = message.text
                 return cell
             }
         }
