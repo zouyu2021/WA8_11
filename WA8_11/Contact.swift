@@ -15,7 +15,7 @@ struct Contact: Codable{
     var email: String
     
     init(name: String, email: String) {
-        self.name = name
+        self.name  = name
         self.email = email
     }
 }
