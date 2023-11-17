@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     
     let mainScreen = MainScreenView()
     
-   //  var messagesList = [Messages]()
     var handleAuth: AuthStateDidChangeListenerHandle?
     var currentUser:FirebaseAuth.User?
     let database = Firestore.firestore()
@@ -27,7 +26,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-
         //MARK: handling if the Authentication state is changed (sign in, sign out, register)...
         handleAuth = Auth.auth().addStateDidChangeListener{ auth, user in
             if user == nil{
@@ -75,10 +73,6 @@ class ViewController: UIViewController {
                             self.mainScreen.tableViewMessages.reloadData()
                         }
                     })
-               
-                
-                //MARK: Observe Firestore database to display the contacts list...
-                
             }
         }
     }
@@ -96,7 +90,6 @@ class ViewController: UIViewController {
         //MARK: removing the separator line.
         mainScreen.tableViewMessages.separatorStyle = .none
     }
-       
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

@@ -19,12 +19,12 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource{
         let message = messagesList[indexPath.row]
 
         if message.senderEmail == currentUser?.displayName {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewSelfMessages, for: indexPath) as? SelfMessagesTableViewCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewSelfMessageID, for: indexPath) as? SelfMessagesTableViewCell {
                 cell.messageLabel.text = message.text
                 return cell
             }
         } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewFriendMessages, for: indexPath) as? FriendMessagesTableViewCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewFriendMessageID, for: indexPath) as? FriendMessagesTableViewCell {
                 cell.messageLabel.text = message.text
                 return cell
             }

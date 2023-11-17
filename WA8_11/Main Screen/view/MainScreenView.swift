@@ -42,7 +42,7 @@ class MainScreenView: UIView {
     
     func setupTableViewMessages(){
         tableViewMessages = UITableView()
-        tableViewMessages.register(MassagesTableViewCell.self, forCellReuseIdentifier: Configs.tableViewMessagesID)
+        tableViewMessages.register(ContactTableViewCell.self, forCellReuseIdentifier: Configs.tableViewContactID)
         tableViewMessages.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tableViewMessages)
     }
