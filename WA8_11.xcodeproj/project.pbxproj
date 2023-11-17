@@ -21,7 +21,7 @@
 		B8E873622B031F2E0058E426 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B8E873612B031F2E0058E426 /* FirebaseMessaging */; };
 		B8E873642B031F2E0058E426 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B8E873632B031F2E0058E426 /* FirebaseStorage */; };
 		B8E873662B031F670058E426 /* RightBarButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873652B031F670058E426 /* RightBarButtonManager.swift */; };
-		B8E873682B031F7E0058E426 /* MessagesTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873672B031F7E0058E426 /* MessagesTableViewManager.swift */; };
+		B8E873682B031F7E0058E426 /* ContactsTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873672B031F7E0058E426 /* ContactsTableViewManager.swift */; };
 		B8E8736A2B031FAC0058E426 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873692B031FAC0058E426 /* ContactTableViewCell.swift */; };
 		B8E8736C2B031FC80058E426 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8736B2B031FC80058E426 /* MainScreenView.swift */; };
 		B8E873722B0320570058E426 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873712B0320570058E426 /* Message.swift */; };
@@ -34,7 +34,7 @@
 		B9AE922F2B05D77E00479A5B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE922E2B05D77E00479A5B /* Contact.swift */; };
 		B9AE92322B061E4600479A5B /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92312B061E4600479A5B /* MessagesView.swift */; };
 		B9AE92342B061E5A00479A5B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92332B061E5A00479A5B /* MessagesViewController.swift */; };
-		B9AE923A2B073F2600479A5B /* MsgTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92392B073F2600479A5B /* MsgTableViewManager.swift */; };
+		B9AE923A2B073F2600479A5B /* MessagesTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92392B073F2600479A5B /* MessagesTableViewManager.swift */; };
 		B9AE923C2B0746B900479A5B /* SelfMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE923B2B0746B900479A5B /* SelfMessagesTableViewCell.swift */; };
 		B9AE923E2B07470300479A5B /* FriendMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE923D2B07470300479A5B /* FriendMessagesTableViewCell.swift */; };
 		B9AE92402B0771C200479A5B /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE923F2B0771C200479A5B /* Configs.swift */; };
@@ -51,7 +51,7 @@
 		B84815142B029D7D009BC265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8E873562B031ECA0058E426 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8E873652B031F670058E426 /* RightBarButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBarButtonManager.swift; sourceTree = "<group>"; };
-		B8E873672B031F7E0058E426 /* MessagesTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewManager.swift; sourceTree = "<group>"; };
+		B8E873672B031F7E0058E426 /* ContactsTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewManager.swift; sourceTree = "<group>"; };
 		B8E873692B031FAC0058E426 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		B8E8736B2B031FC80058E426 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		B8E873712B0320570058E426 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		B9AE922E2B05D77E00479A5B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		B9AE92312B061E4600479A5B /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		B9AE92332B061E5A00479A5B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		B9AE92392B073F2600479A5B /* MsgTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgTableViewManager.swift; sourceTree = "<group>"; };
+		B9AE92392B073F2600479A5B /* MessagesTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewManager.swift; sourceTree = "<group>"; };
 		B9AE923B2B0746B900479A5B /* SelfMessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfMessagesTableViewCell.swift; sourceTree = "<group>"; };
 		B9AE923D2B07470300479A5B /* FriendMessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMessagesTableViewCell.swift; sourceTree = "<group>"; };
 		B9AE923F2B0771C200479A5B /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			children = (
 				75D7F8292B06B9B000B44B12 /* view */,
 				B848150A2B029D7B009BC265 /* ViewController.swift */,
-				B8E873672B031F7E0058E426 /* MessagesTableViewManager.swift */,
+				B8E873672B031F7E0058E426 /* ContactsTableViewManager.swift */,
 				B8E873652B031F670058E426 /* RightBarButtonManager.swift */,
 			);
 			path = "Main Screen";
@@ -168,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				B9AE92312B061E4600479A5B /* MessagesView.swift */,
-				B9AE92392B073F2600479A5B /* MsgTableViewManager.swift */,
+				B9AE92392B073F2600479A5B /* MessagesTableViewManager.swift */,
 				B9AE92332B061E5A00479A5B /* MessagesViewController.swift */,
 				B9AE923B2B0746B900479A5B /* SelfMessagesTableViewCell.swift */,
 				B9AE923D2B07470300479A5B /* FriendMessagesTableViewCell.swift */,
@@ -266,10 +266,10 @@
 				B8E873782B03217B0058E426 /* RegisterProgressIndicatorManager.swift in Sources */,
 				B8E873722B0320570058E426 /* Message.swift in Sources */,
 				B8E8737E2B0322100058E426 /* ProgressSpinnerViewController.swift in Sources */,
-				B8E873682B031F7E0058E426 /* MessagesTableViewManager.swift in Sources */,
+				B8E873682B031F7E0058E426 /* ContactsTableViewManager.swift in Sources */,
 				B9AE923E2B07470300479A5B /* FriendMessagesTableViewCell.swift in Sources */,
 				B848150B2B029D7B009BC265 /* ViewController.swift in Sources */,
-				B9AE923A2B073F2600479A5B /* MsgTableViewManager.swift in Sources */,
+				B9AE923A2B073F2600479A5B /* MessagesTableViewManager.swift in Sources */,
 				B9AE92342B061E5A00479A5B /* MessagesViewController.swift in Sources */,
 				B84815072B029D7B009BC265 /* AppDelegate.swift in Sources */,
 				B8E873802B0322230058E426 /* ProgressSpinnerDelegate.swift in Sources */,
