@@ -32,5 +32,11 @@ class RegisterViewController: UIViewController {
         registerNewAccount()
     }
     
+    // Show an alert when passwords are inconsistent
+    func showPasswordInconsistentAlert(){
+        let alert = UIAlertController(title: "Error", message: "Confirm passowrd was not correct!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
+    }
     
 }
