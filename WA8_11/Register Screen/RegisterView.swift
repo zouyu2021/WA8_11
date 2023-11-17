@@ -8,10 +8,11 @@
 import UIKit
 
 class RegisterView: UIView {
-    var textFieldName: UITextField!
-    var textFieldEmail: UITextField!
-    var textFieldPassword: UITextField!
-    var buttonRegister: UIButton!
+    var textFieldName:            UITextField!
+    var textFieldEmail:           UITextField!
+    var textFieldPassword:        UITextField!
+    var textFieldConfirmPassword: UITextField!
+    var buttonRegister:           UIButton!
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -20,6 +21,7 @@ class RegisterView: UIView {
         setuptextFieldEmail()
         setuptextFieldPassword()
         setupbuttonRegister()
+        setupTextFieldConfirmPassword()
         
         initConstraints()
     }
@@ -53,6 +55,16 @@ class RegisterView: UIView {
         self.addSubview(textFieldPassword)
     }
     
+    func setupTextFieldConfirmPassword(){
+        textFieldConfirmPassword = UITextField()
+        textFieldConfirmPassword.placeholder = "Confirm Password"
+        textFieldConfirmPassword.textContentType = .password
+        textFieldConfirmPassword.isSecureTextEntry = true
+        textFieldConfirmPassword.borderStyle = .roundedRect
+        textFieldConfirmPassword.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(textFieldConfirmPassword)
+    }
+    
     func setupbuttonRegister(){
         buttonRegister = UIButton(type: .system)
         buttonRegister.setTitle("Register", for: .normal)
@@ -75,7 +87,11 @@ class RegisterView: UIView {
             textFieldPassword.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             textFieldPassword.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
             
-            buttonRegister.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 32),
+            textFieldConfirmPassword.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 16),
+            textFieldConfirmPassword.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            textFieldConfirmPassword.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
+            
+            buttonRegister.topAnchor.constraint(equalTo: textFieldConfirmPassword.bottomAnchor, constant: 32),
             buttonRegister.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
         ])
     }
