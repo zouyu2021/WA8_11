@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MsgTableViewCell: UITableViewCell {
+class SelfMessagesTableViewCell: UITableViewCell {
     
     var messageLabel: UILabel!
     var wrapperCellView: UIView!
@@ -41,6 +41,8 @@ class MsgTableViewCell: UITableViewCell {
         messageLabel.font = UIFont.systemFont(ofSize: 16)
         messageLabel.numberOfLines = 0 // Allows multiple lines
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.textAlignment = .right
+        messageLabel.backgroundColor = .lightGray
         wrapperCellView.addSubview(messageLabel)
     }
     
@@ -57,18 +59,6 @@ class MsgTableViewCell: UITableViewCell {
             messageLabel.bottomAnchor.constraint(equalTo: wrapperCellView.bottomAnchor, constant: -8)
         ])
     }
-    
-//    func configure(with message: Message) {
-//        messageLabel.text = message.text
-//        // Adjust the styling based on whether the message is from the current user
-//        if message.isFromCurrentUser {
-//            wrapperCellView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
-//            messageLabel.textAlignment = .right
-//        } else {
-//            wrapperCellView.backgroundColor = .white
-//            messageLabel.textAlignment = .left
-//        }
-//    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
