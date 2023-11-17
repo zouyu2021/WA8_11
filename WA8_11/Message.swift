@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseFirestoreSwift
-
+// Need to add senderName as the paramter
 struct Message: Codable{
     @DocumentID var id: String?
     var senderEmail: String
