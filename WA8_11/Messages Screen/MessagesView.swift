@@ -35,7 +35,9 @@ class MessagesView: UIView {
     //MARK: the table view to show the list of notes...
     func setupTableViewDetails(){
         tableViewMessages = UITableView()
-        tableViewMessages.register(MsgTableViewCell.self, forCellReuseIdentifier: "Messages")
+        tableViewMessages.register(SelfMessagesTableViewCell.self, forCellReuseIdentifier: Configs.tableViewSelfMessages)
+        
+        tableViewMessages.register(FriendMessagesTableViewCell.self, forCellReuseIdentifier: Configs.tableViewFriendMessages)
         tableViewMessages.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tableViewMessages)
     }

@@ -37,7 +37,7 @@
 		B9AE92342B061E5A00479A5B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92332B061E5A00479A5B /* MessagesViewController.swift */; };
 		B9AE923A2B073F2600479A5B /* MsgTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92392B073F2600479A5B /* MsgTableViewManager.swift */; };
 		B9AE923C2B0746B900479A5B /* SelfMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE923B2B0746B900479A5B /* SelfMessagesTableViewCell.swift */; };
-		B9AE923E2B07470300479A5B /* FriendMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE923D2B07470300479A5B /* FriendMessageTableViewCell.swift */; };
+		B9AE923E2B07470300479A5B /* FriendMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE923D2B07470300479A5B /* FriendMessagesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +67,7 @@
 		B9AE92332B061E5A00479A5B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		B9AE92392B073F2600479A5B /* MsgTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgTableViewManager.swift; sourceTree = "<group>"; };
 		B9AE923B2B0746B900479A5B /* SelfMessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfMessagesTableViewCell.swift; sourceTree = "<group>"; };
-		B9AE923D2B07470300479A5B /* FriendMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMessageTableViewCell.swift; sourceTree = "<group>"; };
+		B9AE923D2B07470300479A5B /* FriendMessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMessagesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 				B9AE92392B073F2600479A5B /* MsgTableViewManager.swift */,
 				B9AE92332B061E5A00479A5B /* MessagesViewController.swift */,
 				B9AE923B2B0746B900479A5B /* SelfMessagesTableViewCell.swift */,
-				B9AE923D2B07470300479A5B /* FriendMessageTableViewCell.swift */,
+				B9AE923D2B07470300479A5B /* FriendMessagesTableViewCell.swift */,
 			);
 			path = "Messages Screen";
 			sourceTree = "<group>";
@@ -267,7 +267,7 @@
 				B8E873722B0320570058E426 /* Message.swift in Sources */,
 				B8E8737E2B0322100058E426 /* ProgressSpinnerViewController.swift in Sources */,
 				B8E873682B031F7E0058E426 /* MessagesTableViewManager.swift in Sources */,
-				B9AE923E2B07470300479A5B /* FriendMessageTableViewCell.swift in Sources */,
+				B9AE923E2B07470300479A5B /* FriendMessagesTableViewCell.swift in Sources */,
 				B848150B2B029D7B009BC265 /* ViewController.swift in Sources */,
 				B9AE923A2B073F2600479A5B /* MsgTableViewManager.swift in Sources */,
 				B9AE92342B061E5A00479A5B /* MessagesViewController.swift in Sources */,
