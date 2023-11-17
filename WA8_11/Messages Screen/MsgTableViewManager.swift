@@ -16,20 +16,21 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        var cell: UITableViewCell
-        
-        if messagesList[indexPath.row].senderName == currentUser?.displayName{
-            cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewMessages, for: indexPath) as! SelfMessagesTableViewCell
-        }else{
-            cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewMessages, for: indexPath) as! FriendMessagesTableViewCell
-        }
-        
-     //   cell.messageLabel.text = messagesList[indexPath.row].textMessages
-        
-//        if let messageCell = cell as? MessageTableViewCell {
-//            messageCell.messageLabel.text = messagesList[indexPath.row].textMessages
-//        }
+        let message = messagesList[indexPath.row]
 
-        return cell
+        if message.senderName == currentUser?.displayName {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewSelfMessages, for: indexPath) as? SelfMessagesTableViewCell {
+                cell.messageLabel.text = message.textMessages
+                return cell
+            }
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewFriendMessages, for: indexPath) as? FriendMessagesTableViewCell {
+                cell.messageLabel.text = message.textMessages
+                return cell
+            }
+        }
+
+        // Return a default cell if none of the above conditions are met
+        return UITableViewCell()
     }
 }
