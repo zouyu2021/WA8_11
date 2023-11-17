@@ -29,14 +29,20 @@ class RegisterViewController: UIViewController {
     
     @objc func onRegisterTapped(){
         //MARK: creating a new user on Firebase...
-        registerNewAccount()
+        if registerView.textFieldPassword.text == registerView.textFieldPasswordConfirm.text {
+            // Passwords match, proceed with registration logic
+            registerNewAccount()
+        } else {
+            // Passwords do not match, show an alert
+            showAlert()
+        }
     }
     
     // Show an alert when passwords are inconsistent
-    func showPasswordInconsistentAlert(){
-        let alert = UIAlertController(title: "Error", message: "Confirm passowrd was not correct!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true)
-    }
+    func showAlert() {
+        let alert = UIAlertController(title: "Error", message: "Passwords do not match. Please check your input.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+        }
     
 }

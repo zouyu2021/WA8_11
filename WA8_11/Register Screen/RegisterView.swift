@@ -8,11 +8,11 @@
 import UIKit
 
 class RegisterView: UIView {
-    var textFieldName:            UITextField!
-    var textFieldEmail:           UITextField!
-    var textFieldPassword:        UITextField!
-    var textFieldConfirmPassword: UITextField!
-    var buttonRegister:           UIButton!
+    var textFieldName: UITextField!
+    var textFieldEmail: UITextField!
+    var textFieldPassword: UITextField!
+    var textFieldPasswordConfirm: UITextField!
+    var buttonRegister: UIButton!
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -20,8 +20,8 @@ class RegisterView: UIView {
         setuptextFieldName()
         setuptextFieldEmail()
         setuptextFieldPassword()
+        setuptextFieldPasswordConfirm()
         setupbuttonRegister()
-        setupTextFieldConfirmPassword()
         
         initConstraints()
     }
@@ -55,14 +55,14 @@ class RegisterView: UIView {
         self.addSubview(textFieldPassword)
     }
     
-    func setupTextFieldConfirmPassword(){
-        textFieldConfirmPassword = UITextField()
-        textFieldConfirmPassword.placeholder = "Confirm Password"
-        textFieldConfirmPassword.textContentType = .password
-        textFieldConfirmPassword.isSecureTextEntry = true
-        textFieldConfirmPassword.borderStyle = .roundedRect
-        textFieldConfirmPassword.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(textFieldConfirmPassword)
+    func setuptextFieldPasswordConfirm(){
+        textFieldPasswordConfirm = UITextField()
+        textFieldPasswordConfirm.placeholder = "Confirm Password"
+        textFieldPasswordConfirm.textContentType = .password
+        textFieldPasswordConfirm.isSecureTextEntry = true
+        textFieldPasswordConfirm.borderStyle = .roundedRect
+        textFieldPasswordConfirm.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(textFieldPasswordConfirm)
     }
     
     func setupbuttonRegister(){
@@ -71,6 +71,7 @@ class RegisterView: UIView {
         buttonRegister.titleLabel?.font = .boldSystemFont(ofSize: 16)
         buttonRegister.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(buttonRegister)
+
     }
     
     func initConstraints(){
@@ -87,11 +88,11 @@ class RegisterView: UIView {
             textFieldPassword.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             textFieldPassword.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
             
-            textFieldConfirmPassword.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 16),
-            textFieldConfirmPassword.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            textFieldConfirmPassword.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
+            textFieldPasswordConfirm.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 16),
+            textFieldPasswordConfirm.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            textFieldPasswordConfirm.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
             
-            buttonRegister.topAnchor.constraint(equalTo: textFieldConfirmPassword.bottomAnchor, constant: 32),
+            buttonRegister.topAnchor.constraint(equalTo: textFieldPasswordConfirm.bottomAnchor, constant: 32),
             buttonRegister.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
         ])
     }
@@ -99,4 +100,5 @@ class RegisterView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }

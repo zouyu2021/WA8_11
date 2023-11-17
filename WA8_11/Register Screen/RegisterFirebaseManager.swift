@@ -17,10 +17,10 @@ extension RegisterViewController{
         if let name            = registerView.textFieldName.text,
            let email           = registerView.textFieldEmail.text,
            let password        = registerView.textFieldPassword.text,
-           let confirmPassword = registerView.textFieldConfirmPassword.text{
+           let confirmPassword = registerView.textFieldPasswordConfirm.text{
             if password != confirmPassword{
                 self.hideActivityIndicator()
-                self.showPasswordInconsistentAlert()
+                self.showAlert()
                 return
             }
             //Validations....
