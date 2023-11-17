@@ -32,8 +32,6 @@
 		B8E8737C2B0321EC0058E426 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8737B2B0321EC0058E426 /* RegisterViewController.swift */; };
 		B8E8737E2B0322100058E426 /* ProgressSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8737D2B0322100058E426 /* ProgressSpinnerViewController.swift */; };
 		B8E873802B0322230058E426 /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8737F2B0322230058E426 /* ProgressSpinnerDelegate.swift */; };
-		B8E873832B0325450058E426 /* AddMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873822B0325450058E426 /* AddMessageViewController.swift */; };
-		B8E873852B0325660058E426 /* AddMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E873842B0325660058E426 /* AddMessageView.swift */; };
 		B9AE922F2B05D77E00479A5B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE922E2B05D77E00479A5B /* Contact.swift */; };
 		B9AE92322B061E4600479A5B /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92312B061E4600479A5B /* MessagesView.swift */; };
 		B9AE92342B061E5A00479A5B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE92332B061E5A00479A5B /* MessagesViewController.swift */; };
@@ -62,8 +60,6 @@
 		B8E8737B2B0321EC0058E426 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B8E8737D2B0322100058E426 /* ProgressSpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerViewController.swift; sourceTree = "<group>"; };
 		B8E8737F2B0322230058E426 /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
-		B8E873822B0325450058E426 /* AddMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
-		B8E873842B0325660058E426 /* AddMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageView.swift; sourceTree = "<group>"; };
 		B9AE922E2B05D77E00479A5B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		B9AE92312B061E4600479A5B /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		B9AE92332B061E5A00479A5B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75D7F8292B06B9B000B44B12 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				B8E8736B2B031FC80058E426 /* MainScreenView.swift */,
+				B8E873692B031FAC0058E426 /* MassagesTableViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		B84814FA2B029D7B009BC265 = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +111,6 @@
 		B84815052B029D7B009BC265 /* WA8_11 */ = {
 			isa = PBXGroup;
 			children = (
-				B8E873812B0325260058E426 /* Add Message Screen */,
 				B8E8736F2B0320230058E426 /* Config.swift */,
 				B8E873712B0320570058E426 /* Message.swift */,
 				B9AE922E2B05D77E00479A5B /* Contact.swift */,
@@ -128,11 +132,10 @@
 		B8E873552B031D1E0058E426 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				75D7F8292B06B9B000B44B12 /* view */,
 				B848150A2B029D7B009BC265 /* ViewController.swift */,
-				B8E873652B031F670058E426 /* RightBarButtonManager.swift */,
 				B8E873672B031F7E0058E426 /* MessagesTableViewManager.swift */,
-				B8E873692B031FAC0058E426 /* MassagesTableViewCell.swift */,
-				B8E8736B2B031FC80058E426 /* MainScreenView.swift */,
+				B8E873652B031F670058E426 /* RightBarButtonManager.swift */,
 			);
 			path = "Main Screen";
 			sourceTree = "<group>";
@@ -140,10 +143,10 @@
 		B8E8736D2B031FFD0058E426 /* Register Screen */ = {
 			isa = PBXGroup;
 			children = (
-				B8E873732B03210E0058E426 /* RegisterFirebaseManager.swift */,
-				B8E873772B03217B0058E426 /* RegisterProgressIndicatorManager.swift */,
 				B8E873792B0321A10058E426 /* RegisterView.swift */,
 				B8E8737B2B0321EC0058E426 /* RegisterViewController.swift */,
+				B8E873732B03210E0058E426 /* RegisterFirebaseManager.swift */,
+				B8E873772B03217B0058E426 /* RegisterProgressIndicatorManager.swift */,
 			);
 			path = "Register Screen";
 			sourceTree = "<group>";
@@ -157,21 +160,12 @@
 			path = "Process Indicator";
 			sourceTree = "<group>";
 		};
-		B8E873812B0325260058E426 /* Add Message Screen */ = {
-			isa = PBXGroup;
-			children = (
-				B8E873822B0325450058E426 /* AddMessageViewController.swift */,
-				B8E873842B0325660058E426 /* AddMessageView.swift */,
-			);
-			path = "Add Message Screen";
-			sourceTree = "<group>";
-		};
 		B9AE92302B061E1900479A5B /* Messages Screen */ = {
 			isa = PBXGroup;
 			children = (
 				B9AE92312B061E4600479A5B /* MessagesView.swift */,
-				B9AE92332B061E5A00479A5B /* MessagesViewController.swift */,
 				B9AE92352B06253300479A5B /* MsgTableViewCell.swift */,
+				B9AE92332B061E5A00479A5B /* MessagesViewController.swift */,
 			);
 			path = "Messages Screen";
 			sourceTree = "<group>";
@@ -266,13 +260,11 @@
 				B8E873782B03217B0058E426 /* RegisterProgressIndicatorManager.swift in Sources */,
 				B8E873722B0320570058E426 /* Message.swift in Sources */,
 				B8E8737E2B0322100058E426 /* ProgressSpinnerViewController.swift in Sources */,
-				B8E873832B0325450058E426 /* AddMessageViewController.swift in Sources */,
 				B8E873682B031F7E0058E426 /* MessagesTableViewManager.swift in Sources */,
 				B848150B2B029D7B009BC265 /* ViewController.swift in Sources */,
 				B9AE92342B061E5A00479A5B /* MessagesViewController.swift in Sources */,
 				B8E873702B0320230058E426 /* Config.swift in Sources */,
 				B84815072B029D7B009BC265 /* AppDelegate.swift in Sources */,
-				B8E873852B0325660058E426 /* AddMessageView.swift in Sources */,
 				B8E873802B0322230058E426 /* ProgressSpinnerDelegate.swift in Sources */,
 				B9AE92362B06253300479A5B /* MsgTableViewCell.swift in Sources */,
 				B8E8737A2B0321A10058E426 /* RegisterView.swift in Sources */,
@@ -439,6 +431,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,6 +460,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

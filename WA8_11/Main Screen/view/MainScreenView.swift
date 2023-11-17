@@ -10,7 +10,6 @@ import UIKit
 class MainScreenView: UIView {
     var profilePic: UIImageView!
     var labelText: UILabel!
-    var floatingButtonAddMessage: UIButton!
     var tableViewMessages: UITableView!
     
     override init(frame: CGRect) {
@@ -19,7 +18,6 @@ class MainScreenView: UIView {
         
         setupProfilePic()
         setupLabelText()
-        setupFloatingButtonAddMessage()
         setupTableViewMessages()
         initConstraints()
     }
@@ -49,23 +47,6 @@ class MainScreenView: UIView {
         self.addSubview(tableViewMessages)
     }
     
-    func setupFloatingButtonAddMessage(){
-        floatingButtonAddMessage = UIButton(type: .system)
-        floatingButtonAddMessage.setTitle("", for: .normal)
-        floatingButtonAddMessage.setImage(UIImage(systemName: "person.crop.circle.fill.badge.plus")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        floatingButtonAddMessage.contentHorizontalAlignment = .fill
-        floatingButtonAddMessage.contentVerticalAlignment = .fill
-        floatingButtonAddMessage.imageView?.contentMode = .scaleAspectFit
-        floatingButtonAddMessage.layer.cornerRadius = 16
-        floatingButtonAddMessage.imageView?.layer.shadowOffset = .zero
-        floatingButtonAddMessage.imageView?.layer.shadowRadius = 0.8
-        floatingButtonAddMessage.imageView?.layer.shadowOpacity = 0.7
-        floatingButtonAddMessage.imageView?.clipsToBounds = true
-        floatingButtonAddMessage.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(floatingButtonAddMessage)
-    }
-    
-    
     //MARK: setting up constraints...
     func initConstraints(){
         NSLayoutConstraint.activate([
@@ -82,12 +63,6 @@ class MainScreenView: UIView {
             tableViewMessages.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -8),
             tableViewMessages.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             tableViewMessages.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            
-            floatingButtonAddMessage.widthAnchor.constraint(equalToConstant: 48),
-            floatingButtonAddMessage.heightAnchor.constraint(equalToConstant: 48),
-            floatingButtonAddMessage.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            floatingButtonAddMessage.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            
         ])
     }
     

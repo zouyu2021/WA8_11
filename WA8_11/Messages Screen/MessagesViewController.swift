@@ -14,6 +14,7 @@ class MessagesViewController: UIViewController {
     let messagesScreen = MessagesView()
     var receiver: Contact!
     
+    
     // use this listener to track whether any user is signed in.
     var handleAuth: AuthStateDidChangeListenerHandle?
     // a variable to keep an instance of the current signed-in Firebase user.
@@ -27,51 +28,69 @@ class MessagesViewController: UIViewController {
         view = messagesScreen
     }
     
-//    // a lifecycle method where you can handle the logic before the screen is loaded.
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//        //MARK: handling if the Authentication state is changed (sign in, sign out, register)...
-//        handleAuth = Auth.auth().addStateDidChangeListener{ auth, user in
-//
-//            //MARK: the user is signed in...
-//            // update the local currentUser instance with the signed-in user.
-//            self.currentUser = user
-//
-//
-//            
-//            //MARK: Observe Firestore database to display the contacts list...
-//            self.database.collection("users")
-//                .document((self.currentUser?.email)!)
-//            // we observe the "contacts" collection of the current user document. If anything is changed in that collection, the closure gets triggered and querySnapshot contains the updates.
-//                .collection("contacts")
-//                .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
-//                    if let documents = querySnapshot?.documents{
-//                        self.contactsList.removeAll()
-//                        for document in documents{
-//                            do{
-//                                // parse the received document and decode that according to the Contact struct (which is Codable).
-//                                let contact  = try document.data(as: Contact.self)
-//                                self.contactsList.append(contact)
-//                            }catch{
-//                                print(error)
-//                            }
-//                        }
-//                        // sort the contacts in the alphabetic order of names.
-//                        self.contactsList.sort(by: {$0.name < $1.name})
-//                        self.mainScreen.tableViewContacts.reloadData()
-//                    }
-//                })
-//        }
-//    }
-//    
+    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         title = receiver.name
         
+        // Check if the receiver is set
+        guard let receiver = receiver, let currentUserEmail = Auth.auth().currentUser?.email else {
+            print("Receiver or current user is not set")
+            return
+        }
+        
+        // Check if a chat already exists
+        checkForExistingChat(with: receiver, currentUserEmail: currentUserEmail)
 
+    }
+    
+    private func checkForExistingChat(with receiver: Contact, currentUserEmail: String) {
+            database.collection("users").document(currentUserEmail).collection("chats")
+                .whereField("receiverEmail", isEqualTo: receiver.email)
+                .getDocuments { [weak self] (snapshot, error) in
+                    if let error = error {
+                        print("Error checking for existing chat: \(error)")
+                        return
+                    }
 
-        // Do any additional setup after loading the view.
+                    if let documents = snapshot?.documents, documents.isEmpty {
+                        // No existing chat, create a new one
+                        self?.createChat(with: receiver, currentUserEmail: currentUserEmail)
+                    } else {
+                        print("Chat already exists with \(receiver.name)")
+                    }
+                }
+        }
+
+    private func createChat(with receiver: Contact, currentUserEmail: String) {
+        let newChatID = database.collection("users").document(currentUserEmail).collection("chats").document().documentID
+
+        let currentUserChatData: [String: Any] = ["receiverEmail": receiver.email]
+        
+        let receiverChatData: [String: Any] = ["receiverEmail": currentUserEmail]
+
+        
+        // Create chat document for the current user
+        database.collection("users").document(currentUserEmail).collection("chats").document(newChatID).setData(currentUserChatData) { error in
+            if let error = error {
+                print("Error writing chat document for current user: \(error)")
+            } else {
+                print("Chat document for current user successfully written with ID: \(newChatID)")
+            }
+        }
+
+        // Create corresponding chat document for the receiver
+        database.collection("users").document(receiver.email).collection("chats").document(newChatID).setData(receiverChatData) { error in
+            if let error = error {
+                print("Error writing chat document for receiver: \(error)")
+            } else {
+                print("Chat document for receiver successfully written with ID: \(newChatID)")
+            }
+        }
+        
+        // Create the actual chat document in the 'chats' collection
+        database.collection("chats").document(newChatID).setData(["participants": [currentUserEmail, receiver.email]])
     }
     
 //    // another lifecycle method where you can handle the logic right before the screen disappears.
