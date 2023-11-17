@@ -9,7 +9,6 @@ import UIKit
 
 class MessagesView: UIView {
     
-    
     var tableViewMessages: UITableView!
     
     var buttonPostView:UIView!
@@ -36,7 +35,6 @@ class MessagesView: UIView {
     func setupTableViewDetails(){
         tableViewMessages = UITableView()
         tableViewMessages.register(SelfMessagesTableViewCell.self, forCellReuseIdentifier: Configs.tableViewSelfMessageID)
-        
         tableViewMessages.register(FriendMessagesTableViewCell.self, forCellReuseIdentifier: Configs.tableViewFriendMessageID)
         tableViewMessages.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tableViewMessages)
@@ -86,12 +84,10 @@ class MessagesView: UIView {
     func initConstraints(){
         NSLayoutConstraint.activate([
             
-            
             tableViewMessages.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
             tableViewMessages.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             tableViewMessages.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             tableViewMessages.bottomAnchor.constraint(equalTo: buttonPostView.topAnchor, constant: -16),
-            
 
             buttonPostView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,constant: -8),
             buttonPostView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8),
@@ -99,7 +95,6 @@ class MessagesView: UIView {
             buttonPostView.topAnchor.constraint(equalTo: textViewNote.topAnchor, constant: -8),
             
             textViewNote.heightAnchor.constraint(equalToConstant: 65),
-            //textViewNote.topAnchor.constraint(equalTo:bottomAddView.topAnchor, constant: 8),
             textViewNote.bottomAnchor.constraint(equalTo: buttonPost.topAnchor, constant: -8),
             textViewNote.leadingAnchor.constraint(equalTo: buttonPostView.leadingAnchor, constant:
             8),
