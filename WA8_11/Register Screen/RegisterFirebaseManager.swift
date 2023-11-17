@@ -11,6 +11,8 @@ import FirebaseAuth
 extension RegisterViewController{
     
     func registerNewAccount(){
+        //MARK: display the progress indicator...
+        showActivityIndicator()
         //MARK: create a Firebase user with email and password...
         if let name = registerView.textFieldName.text,
            let email = registerView.textFieldEmail.text,
@@ -75,6 +77,8 @@ extension RegisterViewController{
                     print("Error setting contacts data: \(error.localizedDescription)")
                 } else {
                     print("User and contacts data successfully written!")
+                    //MARK: hide the progress indicator...
+                    self.hideActivityIndicator()
                     // go back to the main screen
                     self.navigationController?.popViewController(animated: true)
                 }
