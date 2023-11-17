@@ -48,15 +48,39 @@ extension RegisterViewController{
     
     //MARK: Logic to add a contact to Firestore...
     func saveUserToFirestore(contact: Contact) {
-        let data: [String: Any] = ["name": contact.name]
         
-        db.collection("users").document(contact.email).setData(data) { error in
-            if let error = error {
-                print("Error writing document: \(error)")
-            } else {
-                print("Document successfully written!")
-                self.navigationController?.popViewController(animated: true)
-            }
+        // get a reference to the email document
+        let emailDocument = db.collection("users").document(contact.email)
+        let userData: [String: String] = ["name": contact.name]
+
+        do {
+            // add user name as a field to the user email, which is the docuemnt ID
+            try emailDocument.setData(from: userData, completion: { (error) in
+                if let error = error {
+                    print("Error setting user data: \(error.localizedDescription)")
+                } else {
+                    print("User email data successfully written!")
+                }
+            })
+        } catch {
+            print("Error encoding user data: \(error.localizedDescription)")
+        }
+        
+        
+        let dummyData: [String: String] = ["email": "This is dummy"]
+        do {
+            // create a collection "chat" with dummy data
+            try emailDocument.collection("chats").document("Dummy ID").setData(from: dummyData, completion: {(error) in
+                if let error = error {
+                    print("Error setting contacts data: \(error.localizedDescription)")
+                } else {
+                    print("User and contacts data successfully written!")
+                    // go back to the main screen
+                    self.navigationController?.popViewController(animated: true)
+                }
+            })
+        } catch {
+            print("Error encoding contacts data: \(error.localizedDescription)")
         }
     }
     
