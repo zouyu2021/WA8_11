@@ -27,7 +27,6 @@ class ContactTableViewCell: UITableViewCell {
     
     func setupWrapperCellView(){
         wrapperCellView = UITableViewCell()
-        
         //working with the shadows and colors...
         wrapperCellView.backgroundColor = .white
         wrapperCellView.layer.cornerRadius = 6.0
@@ -59,6 +58,7 @@ class ContactTableViewCell: UITableViewCell {
             labelName.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
             
             wrapperCellView.heightAnchor.constraint(equalToConstant: 72)
+            
         ])
     }
     

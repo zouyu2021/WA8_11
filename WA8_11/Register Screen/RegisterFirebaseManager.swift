@@ -4,7 +4,7 @@
 //
 //  Created by Yu Zou on 11/13/23.
 //
-
+import UIKit
 import Foundation
 import FirebaseAuth
 
@@ -23,20 +23,44 @@ extension RegisterViewController{
                 self.showAlert()
                 return
             }
+            
             //Validations....
-            Auth.auth().createUser(withEmail: email, password: password, completion: {result, error in
-                if error == nil{
-                    //MARK: the user creation is successful...
-                    let contact = Contact(name: name, email: email.lowercased()
-)
-                    self.setNameOfTheUserInFirebaseAuth(contact: contact)
-                }else{
-                    //MARK: there is a error creating the user...
-                    print(error)
+            Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                if let error = error as NSError? {
+                    self.hideActivityIndicator()
+                    if error.code == AuthErrorCode.emailAlreadyInUse.rawValue {
+                        // Email already in use, show an alert to the user
+                        self.showAlertWithMessage("This email is already in use. Please use a different email.")
+                    } else {
+                        // Other types of errors
+                        print("Error: \(error.localizedDescription)")
+                    }
+                    return
                 }
-            })
+                
+                // User creation is successful...
+                let contact = Contact(name: name, email: email.lowercased())
+                self.setNameOfTheUserInFirebaseAuth(contact: contact)
+            }
+//            Auth.auth().createUser(withEmail: email, password: password, completion: {result, error in
+//                if error == nil{
+//                    //MARK: the user creation is successful...
+//                    let contact = Contact(name: name, email: email.lowercased())
+//                    self.setNameOfTheUserInFirebaseAuth(contact: contact)
+//                }else{
+//                    //MARK: there is a error creating the user...
+//                    print(error)
+//                }
+//            })
         }
     }
+    
+    // Helper function to show an alert with a specific message
+        func showAlertWithMessage(_ message: String) {
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     
     //MARK: We set the name of the user after we create the account...
     func setNameOfTheUserInFirebaseAuth(contact: Contact){
@@ -72,8 +96,7 @@ extension RegisterViewController{
         } catch {
             print("Error encoding user data: \(error.localizedDescription)")
         }
-        
-        
+    
         let dummyData: [String: String] = ["email": "This is dummy"]
         do {
             // create a collection "chat" with dummy data
@@ -94,3 +117,4 @@ extension RegisterViewController{
     }
     
 }
+
