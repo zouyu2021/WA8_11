@@ -19,7 +19,7 @@ class MessagesViewController: UIViewController {
     // use this listener to track whether any user is signed in.
     var handleAuth: AuthStateDidChangeListenerHandle?
     // a variable to keep an instance of the current signed-in Firebase user.
-    var currentUser:FirebaseAuth.User?
+    let currentUser = Auth.auth().currentUser
     
     let database = Firestore.firestore()
     
@@ -48,55 +48,7 @@ class MessagesViewController: UIViewController {
             }
 
             // Fetch messages for the current chat
-            self.database.collection("chats").document(chatID).collection("messages")
-                .order(by: "timestamp", descending: false)  // Assuming you want to order by timestamp
-                .getDocuments { [weak self] (querySnapshot, error) in
-                    if let error = error {
-                        print("Error fetching messages: \(error)")
-                        return
-                    }
-
-                    guard let documents = querySnapshot?.documents else {
-                        print("No messages found for chat ID: \(chatID)")
-                        return
-                    }
-                    
-                    for document in documents {
-                        do {
-                            let message = try document.data(as: Message.self)
-                            self?.messagesList.append(message)
-                            print("Message retrieved: \(message)")
-                        } catch {
-                            print("Error decoding message: \(error)")
-                        }
-                    }
-
-                    // After the loop, you can also print the entire messagesList
-                    if let messages = self?.messagesList {
-                        print("All messages retrieved: \(messages)")
-                    }
-                    
-                    
-    //                self?.messagesList.removeAll()
-    //
-    //                for document in documents {
-    //                    do {
-    //                        let message = try document.data(as: Message.self)
-    //                        self?.messagesList.append(message)
-    //                        print("Message retrieved: \(message)")
-    //                    } catch {
-    //                        print("Error decoding message: \(error)")
-    //                    }
-    //                }
-    //
-    //                // After the loop, you can also print the entire messagesList
-    //                if let messages = self?.messagesList {
-    //                    print("All messages retrieved: \(messages)")
-    //                }
-    //
-    //                // Reload your table view or other UI component
-    //                self?.messagesScreen.tableViewMessages.reloadData()
-                }
+            self.fetchAllMessages(chatID: chatID)
         }
         
         
@@ -106,10 +58,13 @@ class MessagesViewController: UIViewController {
         super.viewDidLoad()
         title = receiver.name
         
-        
         // Set up button action
         messagesScreen.buttonPost.addTarget(self, action: #selector(postMessage), for: .touchUpInside)
-
+        //MARK: patching table view delegate and date source.
+        messagesScreen.tableViewMessages.delegate = self
+        messagesScreen.tableViewMessages.dataSource = self
+        //MARK: removing the separator line.
+        messagesScreen.tableViewMessages.separatorStyle = .none
     }
 
     
@@ -185,22 +140,28 @@ class MessagesViewController: UIViewController {
             return
         }
 
-            // Check if the currentChatID is set
+        // Check if the currentChatID is set
         guard let chatID = self.currentChatID else {
                 print("Current chat ID is nil")
                 return
             }
             print("Current Chat ID: \(chatID)")
 
-            // Check if the currentUser's email is available
-            guard let currentUserEmail = Auth.auth().currentUser?.email else {
-                print("Current user's email is nil")
-                return
-            }
-            print("Sender Email: \(currentUserEmail)")
+        // Check if the currentUser's email is available
+        guard let currentUserEmail = Auth.auth().currentUser?.email else {
+            print("Current user's email is nil")
+            return
+        }
+        print("Sender Email: \(currentUserEmail)")
+        
+        // Check if the currentUser's name is available
+        guard let currentUserName = Auth.auth().currentUser?.displayName else {
+            print("Current user's name is nil")
+            return
+        }
+        print("Sender Name: \(currentUserName)")
 
-
-        let newMessage = ["text": messageText, "senderEmail": currentUserEmail, "timestamp": FieldValue.serverTimestamp()] as [String : Any]
+        let newMessage = ["text": messageText, "senderEmail": currentUserEmail, "senderName": currentUserName, "timestamp": FieldValue.serverTimestamp()] as [String : Any]
         let messageDocument = database.collection("chats").document(chatID).collection("messages").document()
 
         messageDocument.setData(newMessage) { error in
@@ -211,6 +172,43 @@ class MessagesViewController: UIViewController {
                 self.messagesScreen.textViewNote.text = "" // Clear text field after sending
             }
         }
+        self.fetchAllMessages(chatID: chatID)
+    }
+    
+    private func fetchAllMessages(chatID: String){
+        self.database.collection("chats").document(chatID).collection("messages")
+                    .order(by: "timestamp", descending: false)  // Assuming you want to order by timestamp
+                    .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
+                        if let error = error {
+                            print("Error fetching messages: \(error)")
+                            return
+                        }
+                        
+                        guard let documents = querySnapshot?.documents else {
+                            print("No messages found for chat ID: \(chatID)")
+                            return
+                        }
+                        self.messagesList.removeAll()
+                        
+                        for document in documents {
+                            do {
+                                let message = try document.data(as: Message.self)
+                                self.messagesList.append(message)
+//                                print("Message retrieved: \(message)")
+                            } catch {
+                                print("Error decoding message: \(error)")
+                            }
+                        }
+                        
+                        self.messagesScreen.tableViewMessages.reloadData()
+                        let numberOfRows = self.messagesScreen.tableViewMessages.numberOfRows(inSection: 0)
+                        if numberOfRows > 0{
+                            self.messagesScreen.tableViewMessages.scrollToRow(at: IndexPath(row: numberOfRows - 1, section: 0), at: .bottom, animated: false)
+                        }
+                        
+                        
+                    
+        })
     }
     
     

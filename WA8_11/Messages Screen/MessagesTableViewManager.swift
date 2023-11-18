@@ -17,11 +17,10 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let message = messagesList[indexPath.row]
-
-        if message.senderEmail == currentUser?.displayName {
+        
+        if message.senderName == currentUser?.displayName {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewSelfMessageID, for: indexPath) as? SelfMessagesTableViewCell {
-                
-                cell.labelSender.text = message.senderEmail
+                cell.labelSender.text = message.senderName
                 
                 // Convert Date to String using a DateFormatter
                 let dateFormatter        = DateFormatter()
@@ -33,7 +32,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource{
             }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewFriendMessageID, for: indexPath) as? FriendMessagesTableViewCell {
-                cell.labelSender.text = message.senderEmail
+                cell.labelSender.text = message.senderName
                 
                 // Convert Date to String using a DateFormatter
                 let dateFormatter        = DateFormatter()
