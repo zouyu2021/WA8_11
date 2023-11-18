@@ -25,6 +25,15 @@ class RegisterViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         registerView.buttonRegister.addTarget(self, action: #selector(onRegisterTapped), for: .touchUpInside)
         title = "Register"
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
+        tapRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    //MARK: Hide Keyboard...
+    @objc func hideKeyboardOnTap(){
+        //MARK: removing the keyboard from screen...
+        view.endEditing(true)
     }
     
     @objc func onRegisterTapped(){
