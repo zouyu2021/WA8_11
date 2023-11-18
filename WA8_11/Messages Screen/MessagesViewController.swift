@@ -46,12 +46,9 @@ class MessagesViewController: UIViewController {
                 print("Chat ID is not available")
                 return
             }
-
             // Fetch messages for the current chat
             self.fetchAllMessages(chatID: chatID)
         }
-        
-        
     }
   
     override func viewDidLoad() {
@@ -133,7 +130,6 @@ class MessagesViewController: UIViewController {
         database.collection("chats").document(newChatID).setData(["participants": [currentUserEmail, receiver.email]])
         
         self.currentChatID = newChatID
-       
     }
     
     
@@ -170,19 +166,25 @@ class MessagesViewController: UIViewController {
             return
         }
         print("Sender Name: \(currentUserName)")
-
-        let newMessage = ["text": messageText, "senderEmail": currentUserEmail, "senderName": currentUserName, "timestamp": FieldValue.serverTimestamp()] as [String : Any]
-        let messageDocument = database.collection("chats").document(chatID).collection("messages").document()
-
-        messageDocument.setData(newMessage) { error in
-            if let error = error {
-                print("Error saving message: \(error)")
-            } else {
-                print("Message saved successfully")
-                self.messagesScreen.textViewNote.text = "" // Clear text field after sending
-            }
+        
+        // get messages collection
+        let messageCollection = database.collection("chats").document(chatID).collection("messages")
+        // create a message object
+        let newMessage = Message(senderEmail: currentUserEmail, senderName: currentUserName, text: messageText, timestamp: Date())
+        do{
+            // add message
+            try messageCollection.addDocument(from: newMessage, completion: {(error) in
+                if error == nil{
+                    print("Message saved successfully")
+                    // Clear text field after sending
+                    self.messagesScreen.textViewNote.text = ""
+                }
+            })
+        }catch{
+            print("Error saving message: \(error)")
         }
-        self.fetchAllMessages(chatID: chatID)
+        // add to messagesList
+        self.messagesList.append(newMessage)
     }
     
     private func fetchAllMessages(chatID: String){
@@ -211,23 +213,17 @@ class MessagesViewController: UIViewController {
                         }
                         
                         self.messagesScreen.tableViewMessages.reloadData()
-                        let numberOfRows = self.messagesScreen.tableViewMessages.numberOfRows(inSection: 0)
-                        if numberOfRows > 0{
-                            self.messagesScreen.tableViewMessages.scrollToRow(at: IndexPath(row: numberOfRows - 1, section: 0), at: .bottom, animated: false)
-                        }
-                        
-                        
-                    
+                        self.scrollToBottom()
         })
     }
-    
-    
-//    // another lifecycle method where you can handle the logic right before the screen disappears.
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        // remove the listener from the app so that we do not run the listener infinitely.
-//        Auth.auth().removeStateDidChangeListener(handleAuth!)
-//    }
 
+    func scrollToBottom() {
+        let numberOfSections = messagesScreen.tableViewMessages.numberOfSections
+        let numberOfRows = messagesScreen.tableViewMessages.numberOfRows(inSection: numberOfSections - 1)
+        if numberOfRows > 0 {
+            let indexPath = IndexPath(row: numberOfRows - 1, section: numberOfSections - 1)
+            messagesScreen.tableViewMessages.scrollToRow(at: indexPath, at: .bottom, animated: false)
+        }
+    }
 
 }
